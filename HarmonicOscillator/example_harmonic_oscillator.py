@@ -4,6 +4,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
+#Potential as a function of position
+def getV(x):
+        potvalue = (1.0/2.0)*x**2 
+        return potvalue
+
 #Solver Options
 L = 20 # Interval for calculating the wave function [-L/2,L/2]
 npoints=1000 #grid size (how many discrete points to use in the range [-L/2,L/2])
@@ -20,14 +25,6 @@ E = np.zeros(npoints)
 
 print("Please wait")
 
-#Potential as a function of position
-def getV(x):
-        potvalue = (1.0/2.0)*x**2 
-        return potvalue
-
-def getUii(i):
-        return  -2*(h**2)*getV(x[i])
-
 #-------------------------
 # Main program
 #-------------------------
@@ -36,7 +33,7 @@ def getUii(i):
 print("Calculating matrix...")
 F = np.zeros([npoints,npoints])
 for i in range(0,npoints):
-	F[i,i] = getUii(i) - 2
+	F[i,i] = -2*(h**2)*getV(x[i]) - 2
 	if i > 0:
 		F[i,i-1] = 1
 		if i < npoints-1:
