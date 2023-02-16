@@ -1,43 +1,51 @@
-#%matplotlib widget
-#import ipywidgets as widgets
+# ----------------------------
+# Quantum Harmonic Oscillator
+# ----------------------------
+# Finite differences method as developed by Truhlar JCP 10 (1972) 123-132
+#
+# code by Jordi Faraudo
+#  
+#
 import numpy as np
 import matplotlib.pyplot as plt
-import time
 
 #Potential as a function of position
 def getV(x):
-        potvalue = (1.0/2.0)*x**2 
-        return potvalue
+    potvalue = (1.0/2.0)*x**2 
+    return potvalue
 
-#Solver Options
-L = 20 # Interval for calculating the wave function [-L/2,L/2]
-npoints=1000 #grid size (how many discrete points to use in the range [-L/2,L/2])
-
-#Domain at which the solution will be calculated
-xlower = -L/2.0
-xupper = L/2.0
-x = np.linspace(xlower,xupper,npoints)
-h = x[1]-x[0]  #discretization in space
-
-#Init Energy and Wavefunction
-psi = [None]*npoints
-E = np.zeros(npoints)
-
-print("Please wait")
+#Discretized Schrodinger equation in n points
+def Eq(n,h,x):
+    F = np.zeros([n,n])
+    for i in range(0,n):
+        F[i,i] = -2*(h**2)*getV(x[i]) - 2
+        if i > 0:
+           F[i,i-1] = 1
+           if i < npoints-1:
+              F[i,i+1] = 1
+    return F
 
 #-------------------------
 # Main program
 #-------------------------
+# Interval for calculating the wave function [-L/2,L/2]
+L = 20 
+xlower = -L/2.0
+xupper = L/2.0
 
-#Calculation of F
+#Discretization options
+h = 0.02  #discretization in space
+
+#Create coordinates at which the solution will be calculated
+x = np.arange(xlower,xupper,h)
+#grid size (how many discrete points to use in the range [-L/2,L/2])
+npoints=len(x) 
+
+print("Using",npoints, "grid points.")
+
+#Calculation of discrete form of Schrodinger Equation
 print("Calculating matrix...")
-F = np.zeros([npoints,npoints])
-for i in range(0,npoints):
-	F[i,i] = -2*(h**2)*getV(x[i]) - 2
-	if i > 0:
-		F[i,i-1] = 1
-		if i < npoints-1:
-			F[i,i+1] = 1
+F=Eq(npoints,h,x)
 
 #diagonalize the matrix F
 print("Diagonalizing...")
@@ -57,6 +65,9 @@ print("RESULTS:")
 for k in range(0,9):
 	print("State ",k," Energy = %.2f" %E[k])
 
+#Init Wavefunction (empty list with npoints elements)
+psi = [None]*npoints
+
 #Calculation of normalised Wave Functions
 for k in range(0,len(w)):
 	psi[k] = vs[:,k]
@@ -69,7 +80,6 @@ print("Plotting")
 #v = int(input("\n Quantum Number (enter 0 for ground state):\n>"))
 for v in range(0,9):
 	plt.plot(x,psi[v],label=r'$\psi_v(x)$, k = ' + str(v))
-	#plt.plot(x,psi[v])
 	plt.title(r'$n=$'+ str(v) + r', $E_n$=' + '{:.2f}'.format(E[v]))
 	plt.legend()
 	plt.xlabel(r'$x$(dimensionless)')
