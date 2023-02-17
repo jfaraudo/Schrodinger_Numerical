@@ -18,7 +18,7 @@ def getV(x):
 def Eq(n,h,x):
     F = np.zeros([n,n])
     for i in range(0,n):
-        F[i,i] = -2*(h**2)*getV(x[i]) - 2
+        F[i,i] = -2*(h**2)*(getV(x[i]) + 1)
         if i > 0:
            F[i,i-1] = 1
            if i < npoints-1:
