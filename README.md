@@ -5,3 +5,7 @@ Also provides a simple way to obtain energy levels and their wave functions for 
 
 Based on the method proposed by D. Truhlar, Journal Computational Physics 10 (1972) 123-132
 https://www.sciencedirect.com/science/article/pii/0021999172900940 
+
+An interactive python implementation of this same method is here
+https://liu-group.github.io/1D-PDE-BV/
+
