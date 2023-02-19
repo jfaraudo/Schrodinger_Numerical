@@ -9,5 +9,5 @@ https://www.sciencedirect.com/science/article/pii/0021999172900940
 An interactive python implementation of this same method is here
 https://liu-group.github.io/1D-PDE-BV/
 
-the method is explained in the pdf file.
+The method is explained in the pdf file.
 
