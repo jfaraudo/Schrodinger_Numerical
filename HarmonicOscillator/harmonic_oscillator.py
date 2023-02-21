@@ -38,11 +38,11 @@ xupper = L/2.0
 h = 0.02  #discretization in space
 
 #grid size (how many discrete points to use in the range [-L/2,L/2])
-npoints=int(L/h)+1
+npoints=int(L/h)
 print("Using",npoints, "grid points.")
 
 #Create coordinates at which the solution will be calculated in the range [-L/2,L/2]
-x = np.linspace(xlower,xupper,npoints,endpoint=True)
+x = np.linspace(xlower,xupper,npoints)
 
 #Calculation of discrete form of Schrodinger Equation
 print("Calculating matrix...")
