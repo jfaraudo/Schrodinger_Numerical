@@ -14,21 +14,20 @@ def getV(x):
     potvalue = (1.0/2.0)*x**2 
     return potvalue
 
-#Discretized Schrodinger equation in n points
+#Discretized Schrodinger equation in n points (FROM 0 to n-1)
 def Eq(n,h,x):
     F = np.zeros([n,n])
     for i in range(0,n):
-        F[i,i] = -2.0*(h**2)*getV(x[i]) -2.0
+        F[i,i] = -2*((h**2)*getV(x[i]) + 1)
         if i > 0:
            F[i,i-1] = 1
-           if i < n-1:
+           if i < n-2:
               F[i,i+1] = 1
     return F
 
 #-------------------------
 # Main program
 #-------------------------
-
 # Interval for calculating the wave function [-L/2,L/2]
 L = 20 
 xlower = -L/2.0
@@ -37,12 +36,12 @@ xupper = L/2.0
 #Discretization options
 h = 0.02  #discretization in space
 
+#Create coordinates at which the solution will be calculated
+x = np.arange(xlower,xupper,h)
 #grid size (how many discrete points to use in the range [-L/2,L/2])
-npoints=int(L/h)
-print("Using",npoints, "grid points.")
+npoints=len(x) 
 
-#Create coordinates at which the solution will be calculated in the range [-L/2,L/2]
-x = np.linspace(xlower,xupper,npoints)
+print("Using",npoints, "grid points.")
 
 #Calculation of discrete form of Schrodinger Equation
 print("Calculating matrix...")
@@ -70,10 +69,10 @@ for k in range(0,9):
 psi = [None]*npoints
 
 #Calculation of normalised Wave Functions
-for k in range(0,len(w)-1):
+for k in range(0,len(w)):
 	psi[k] = vs[:,k]
 	integral = h*np.dot(psi[k],psi[k])
-	psi[k] = psi[k]/(integral)**0.5
+	psi[k] = psi[k]/integral**0.5
 
 #Plot Wave functions
 print("Plotting")
