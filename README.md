@@ -11,3 +11,9 @@ https://liu-group.github.io/1D-PDE-BV/
 
 The method is explained in the pdf file.
 
+A key practical aspect is the choice of units before the numerical integration. 
+For some simple potentials it is possible to easily select a dimensionless system of units which allows a general solution, as in the harmonic oscillator example. 
+In general this is not possible or not practical and a typical choice of units is atomic units, as defined here:
+https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Physical_Chemistry_(LibreTexts)/08%3A_Multielectron_Atoms/8.01%3A_Atomic_and_Molecular_Calculations_are_Expressed_in_Atomic_Units
+
+
