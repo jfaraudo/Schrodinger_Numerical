@@ -1,4 +1,4 @@
-Numerical Solution 1D Quantum Harmonic Oscillator
+#Numerical Solution 1D Quantum Harmonic Oscillator
 
 Method: discretization of differential equation which leads to a matrix diagonalization.
 
