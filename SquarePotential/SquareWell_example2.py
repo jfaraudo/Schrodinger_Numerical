@@ -1,7 +1,7 @@
 # ----------------------------
 # Quantum Potential Well
 # ATOMIC UNITS
-# V=4 for x<-2 or x>2
+# V=2 for x<-2 or x>2
 # ----------------------------
 # Finite differences method as developed by Truhlar JCP 10 (1972) 123-132
 #
