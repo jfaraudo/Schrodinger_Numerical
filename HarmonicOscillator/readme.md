@@ -1,7 +1,5 @@
 # Numerical Solution 1D Quantum Harmonic Oscillator
 
-Method: discretization of differential equation which leads to a matrix diagonalization.
-
 The example in Colab considers the same parameters as in Chemistry [LibreText](https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Quantum_Tutorials_(Rioux)/09%3A_Numerical_Solutions_for_Schrodinger's_Equation/9.09%3A_Numerical_Solutions_for_the_Harmonic_Oscillator)
 
 The python scripts implement two different choices of units:
