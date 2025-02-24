@@ -1,4 +1,4 @@
-# Schrodinger_Numerical
+# Schrödinger_Numerical
 Examples of Numerical Solution of the Schrödinger equation for simple potentials as finite difference boundary value problem.
 
 Based on the method proposed by D. Truhlar, [Journal Computational Physics 10 (1972) 123-132](https://www.sciencedirect.com/science/article/pii/0021999172900940)
